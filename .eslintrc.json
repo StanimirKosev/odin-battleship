@@ -8,5 +8,9 @@
     "parserOptions": {
         "ecmaVersion": "latest"
     },
-    "rules": {}
+    "rules": {
+        "no-undef": "off",
+        "no-unused-expressions": "off",
+        "no-return-assign": "off"
+    }
 }
