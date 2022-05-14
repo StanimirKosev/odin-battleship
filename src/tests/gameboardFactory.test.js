@@ -1,5 +1,6 @@
 import gameboardFactory from '../gameboardFactory'
 import shipFactory from '../shipFactory'
+import player from '../playerFactory'
 
 describe('Gameboard', () => {
     // getBoard() tests
@@ -119,6 +120,84 @@ describe('Gameboard', () => {
             gameboard.placeShip(destroyer, 4, 0)
             const shipsPlaced = gameboard.areAllShipsPlaced()
             expect(shipsPlaced).toBe(true)
+        })
+    })
+
+    // receiveAttack() tests
+    describe('receive attack', () => {
+        const gameboard = gameboardFactory()
+        const destroyer = shipFactory('destroyer')
+        const submarine = shipFactory('submarine')
+        gameboard.placeShip(destroyer, 1, 0) // [1,0], [1,1]
+        gameboard.placeShip(submarine, 2, 2) // [2,2], [2,3] , [2,4]
+        gameboard.receiveAttack(0, 0) // miss
+
+        test('miss', () => {
+            const board = gameboard.getBoard()[0][0]
+            expect(board).toEqual('miss')
+        })
+        test('attack destoyer at index 2', () => {
+            gameboard.receiveAttack(1, 1)
+            const attack = destroyer.getHits()
+            expect(attack).toEqual[(null, 'hit')]
+        })
+        test('attack submarine at index 0', () => {
+            gameboard.receiveAttack(2, 2)
+            const attack = submarine.getHits()
+            expect(attack).toEqual[('hit', null, null)]
+        })
+        test('hit on cell [1][1]', () => {
+            gameboard.receiveAttack(1, 1)
+            const board = gameboard.getBoard()[1][1]
+            expect(board).toEqual('hit')
+        })
+        test('hit on cell [2][2]', () => {
+            gameboard.receiveAttack(2, 2)
+            const board = gameboard.getBoard()[2][2]
+            expect(board).toEqual('hit')
+        })
+    })
+
+    // areAllShipsSunk() tests
+    describe('are all ships sunk', () => {
+        const gameboard = gameboardFactory()
+        const submarine = shipFactory('submarine')
+        const destroyer = shipFactory('destroyer')
+        gameboard.placeShip(submarine, 2, 0) // [2,0],[2,1],[2,2]
+        gameboard.placeShip(destroyer, 3, 2) // [3,2],[3,3]
+
+        test('NO ship is sunk', () => {
+            const isSunk = gameboard.areAllShipsSunk()
+            expect(isSunk).toEqual(false)
+        })
+        test('one ship has sunk', () => {
+            gameboard.receiveAttack(2, 0)
+            gameboard.receiveAttack(2, 1)
+            gameboard.receiveAttack(2, 2)
+            const isSunk = gameboard.areAllShipsSunk()
+            expect(isSunk).toEqual(false)
+        })
+        test('all ships have sunk', () => {
+            gameboard.receiveAttack(3, 2)
+            gameboard.receiveAttack(3, 3)
+            const isSunk = gameboard.areAllShipsSunk()
+            expect(isSunk).toEqual(true)
+        })
+    })
+
+    // reset() tests
+    describe('reset board', () => {
+        const gameboard = gameboardFactory()
+        const entity = player()
+        const fleet = entity.getFleet()
+        gameboard.autoPlaceFleet(fleet)
+        gameboard.reset()
+        test('empties board', () => {
+            const board = gameboard
+                .getBoard()
+                .flat() // handy for multidim arrays
+                .every((cell) => cell === null)
+            expect(board).toEqual(true)
         })
     })
 })

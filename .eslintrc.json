@@ -12,6 +12,8 @@
         "no-undef": "off",
         "no-unused-expressions": "off",
         "no-return-assign": "off",
-        "no-plusplus": "off"
+        "no-plusplus": "off",
+        "no-restricted-syntax": "off",
+        "guard-for-in": "off"
     }
 }
