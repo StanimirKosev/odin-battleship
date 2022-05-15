@@ -1,0 +1,68 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+        Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol';
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000000;
+    background-image: linear-gradient(147deg, #04619f 0%, #000000 74%);
+}
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 3rem;
+}
+.title {
+    color: #7fcdff;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.main-body {
+    display: flex;
+    justify-content: center;
+}
+
+.gameboard-p1,
+.gameboard-p2 {
+    padding: 0 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid-title-p1,
+.grid-title-p2 {
+    color: #7fcdff;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.grid-p1,
+.grid-p2 {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    grid-template-rows: repeat(10, 40px);
+}
+
+.grid-cell {
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #e0e0e0;
+}
+
+.grid-cell.carrier,
+.grid-cell.battleship,
+.grid-cell.submarine,
+.grid-cell.cruiser,
+.grid-cell.destroyer {
+    border: 1px solid #00f;
+    background-color: rgb(231, 231, 255);
+}
