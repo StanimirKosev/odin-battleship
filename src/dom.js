@@ -1,5 +1,7 @@
 const winnerContainer = document.querySelector('.winner-container')
 const winnerInfo = document.querySelector('.winner-info')
+const buttonsContainer = document.querySelector('.buttons-container')
+const autoPlaceBtn = document.querySelector('.auto-place')
 
 const gameboardView = (() => {
     const renderCell = (y, x, status) =>
@@ -21,11 +23,11 @@ const gameboardView = (() => {
                 if (status === null) {
                     status = ''
                 } else if (status.ship) {
-                    /*   if (type === 'human') { */
-                    status = status.ship.id
-                    /*   } else {
+                    if (type === 'human') {
+                        status = status.ship.id
+                    } else {
                         status = ''
-                    } */
+                    }
                 }
                 grid += renderCell(i, j, status)
             }
@@ -34,10 +36,22 @@ const gameboardView = (() => {
     }
 
     const renderWinner = (winner) => {
-        winnerContainer.classList.toggle('active')
+        winnerContainer.classList.add('active')
         winnerInfo.textContent = winner
     }
 
-    return { renderGrid, renderWinner }
+    // remove buttons on start
+    const startGame = () => {
+        buttonsContainer.classList.add('hide')
+        autoPlaceBtn.setAttribute('disabled', '')
+    }
+
+    /* const playAgain = () => {
+        winnerContainer.classList.remove('active')
+        buttonsContainer.classList.remove('hide')
+        autoPlaceBtn.removeAttribute('disabled', '')
+    } */
+
+    return { renderGrid, renderWinner, startGame /* , playAgain */ }
 })()
 export default gameboardView

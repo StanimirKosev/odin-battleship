@@ -80,6 +80,7 @@ const gameboardFactory = () => {
     }
 
     const autoPlace = (ship) => {
+        // might update it to not place if there are nearby ships
         const [y, x] = randomCoordinates()
         const changeOrient = Math.random() > 0.5
         if (changeOrient) ship.changeDirection()

@@ -1,5 +1,15 @@
 import game from './game'
 
+const autoPlaceBtn = document.querySelector('.auto-place')
+const playAgainBtn = document.querySelector('.play-again')
+const link = document.querySelector('.my-link')
+
 game().renderGrids()
 
-game().addAttackEventListener()
+autoPlaceBtn.addEventListener('click', () => {
+    game().autoPlace()
+})
+
+playAgainBtn.addEventListener('click', () => {
+    link.click()
+})
