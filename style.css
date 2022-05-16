@@ -58,6 +58,15 @@ body {
     border: 1px solid #cacaca;
 }
 
+.grid-p2 > .grid-cell {
+    cursor: crosshair;
+}
+
+.grid-p2 > .grid-cell:hover:not(.hit, .miss) {
+    border: 1px solid rgb(56, 235, 33);
+    background-color: rgb(222, 255, 221);
+}
+
 .grid-p1 > .grid-cell.carrier,
 .grid-p1 > .grid-cell.battleship,
 .grid-p1 > .grid-cell.submarine,
@@ -104,17 +113,47 @@ body {
     padding-bottom: 30px;
 }
 
+.auto-place,
 .play-again {
     width: 150px;
     padding: 10px;
     border-radius: 6px;
     border: 1px solid #7fcdff;
     color: #7fcdff;
-    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 22px;
     font-weight: bold;
     cursor: pointer;
 }
 
+.auto-place:hover,
 .play-again:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    background-color: #1da2d8;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    opacity: 1;
+}
+
+.buttons-container.hide {
+    opacity: 0;
+}
+
+.auto-place {
+    width: 120px;
+    padding: 5px;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.auto-place:disabled {
+    cursor: default;
+}
+
+.attack-text {
+    color: #7fcdff;
+    font-size: 20px;
 }
