@@ -1,8 +1,17 @@
+const winnerContainer = document.querySelector('.winner-container')
+const winnerInfo = document.querySelector('.winner-info')
+
 const gameboardView = (() => {
     const renderCell = (y, x, status) =>
         `<div class="grid-cell cell-${y}-${x} ${status}" data-y='${y}' data-x='${x}'></div>`
 
+    const clearGrid = (parent) => {
+        const grid = parent
+        grid.textContent = ''
+    }
+
     const renderGrid = (parent, gameboard, type) => {
+        clearGrid(parent)
         const board = gameboard.getBoard()
         const { length } = board
         let grid = ''
@@ -12,9 +21,9 @@ const gameboardView = (() => {
                 if (status === null) {
                     status = ''
                 } else if (status.ship) {
-                    /* if (type === 'human') { */
+                    /*   if (type === 'human') { */
                     status = status.ship.id
-                    /* } else {
+                    /*   } else {
                         status = ''
                     } */
                 }
@@ -24,6 +33,11 @@ const gameboardView = (() => {
         parent.insertAdjacentHTML('afterbegin', grid)
     }
 
-    return { renderGrid }
+    const renderWinner = (winner) => {
+        winnerContainer.classList.toggle('active')
+        winnerInfo.textContent = winner
+    }
+
+    return { renderGrid, renderWinner }
 })()
 export default gameboardView

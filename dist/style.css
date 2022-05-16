@@ -55,14 +55,66 @@ body {
     width: 40px;
     height: 40px;
     background-color: white;
-    border: 1px solid #e0e0e0;
+    border: 1px solid #cacaca;
 }
 
-.grid-cell.carrier,
-.grid-cell.battleship,
-.grid-cell.submarine,
-.grid-cell.cruiser,
-.grid-cell.destroyer {
+.grid-p1 > .grid-cell.carrier,
+.grid-p1 > .grid-cell.battleship,
+.grid-p1 > .grid-cell.submarine,
+.grid-p1 > .grid-cell.cruiser,
+.grid-p1 > .grid-cell.destroyer {
     border: 1px solid #00f;
-    background-color: rgb(231, 231, 255);
+    background-color: rgb(226, 221, 255);
+}
+
+.grid-cell.miss {
+    background-color: rgb(214, 207, 252);
+}
+
+.grid-cell.hit {
+    border: 1px solid red;
+    background-color: rgb(255, 221, 221);
+}
+
+.winner-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    pointer-events: none;
+}
+
+.winner-container.active {
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+.winner-info {
+    font-size: 50px;
+    font-weight: bold;
+    color: #7fcdff;
+    padding-bottom: 30px;
+}
+
+.play-again {
+    width: 150px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #7fcdff;
+    color: #7fcdff;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.play-again:hover {
+    background-color: rgba(0, 0, 0, 0.1);
 }
