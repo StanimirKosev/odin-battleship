@@ -1,4 +1,4 @@
-import shipFactory from '../shipFactory'
+import shipFactory from '../factories/shipFactory'
 
 // Ship Factory
 const ship = shipFactory('carrier')

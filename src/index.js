@@ -1,4 +1,4 @@
-import game from './game'
+import game from './factories/game'
 
 const autoPlaceBtn = document.querySelector('.auto-place')
 const playAgainBtn = document.querySelector('.play-again')

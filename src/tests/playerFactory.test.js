@@ -1,5 +1,5 @@
-import player from '../playerFactory'
-import gameboardFactory from '../gameboardFactory'
+import player from '../factories/playerFactory'
+import gameboardFactory from '../factories/gameboardFactory'
 
 const human = player('human')
 const computer = player('computer')

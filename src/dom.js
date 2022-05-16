@@ -26,6 +26,7 @@ const gameboardView = (() => {
                     if (type === 'human') {
                         status = status.ship.id
                     } else {
+                        // hide computer ship's in dev tools
                         status = ''
                     }
                 }
@@ -46,12 +47,6 @@ const gameboardView = (() => {
         autoPlaceBtn.setAttribute('disabled', '')
     }
 
-    /* const playAgain = () => {
-        winnerContainer.classList.remove('active')
-        buttonsContainer.classList.remove('hide')
-        autoPlaceBtn.removeAttribute('disabled', '')
-    } */
-
-    return { renderGrid, renderWinner, startGame /* , playAgain */ }
+    return { renderGrid, renderWinner, startGame }
 })()
 export default gameboardView

@@ -1,6 +1,6 @@
 import player from './playerFactory'
 import gameboardFactory from './gameboardFactory'
-import gameboardView from './dom'
+import gameboardView from '../dom'
 
 const p1Grid = document.querySelector('.grid-p1')
 const p2Grid = document.querySelector('.grid-p2')
@@ -57,7 +57,7 @@ const game = () => {
         addAttackEventListener()
     }
 
-    return { renderGrids, addAttackEventListener, autoPlace }
+    return { renderGrids, autoPlace }
 }
 
 export default game

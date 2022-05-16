@@ -1,6 +1,6 @@
-import gameboardFactory from '../gameboardFactory'
-import shipFactory from '../shipFactory'
-import player from '../playerFactory'
+import gameboardFactory from '../factories/gameboardFactory'
+import shipFactory from '../factories/shipFactory'
+import player from '../factories/playerFactory'
 
 describe('Gameboard', () => {
     // getBoard() tests
